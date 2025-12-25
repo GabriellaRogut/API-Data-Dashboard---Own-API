@@ -1,0 +1,607 @@
+/* General Styles */
+:root {
+    --bright: #c20505;
+    --mute: #da7575;
+    --dark-transparent: #971616e8;
+
+    --red-btn: #b34f4f;
+    --green-btn: #86c787;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #ececec;
+    color: #333;
+}
+
+
+/* Header */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 25px 20px;
+    box-shadow: 0 4px 14px #00000014;
+    margin-bottom: 30px;
+    position: relative;
+    border-radius: 0 0 12px 12px;
+}
+
+.decorative-line {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #4CAF50, #81C784);
+    border-radius: 2px;
+}
+
+header h1 {
+    margin: 0; 
+    font-size: 2em; 
+    font-weight: 700; 
+    color: #111;
+}
+
+header p {
+    margin-top: 6px; 
+    font-size: 1em; 
+    color: #666; 
+    letter-spacing: 0.5px;
+}
+
+.badges-container {
+    display: flex; 
+    gap: 15px; 
+    justify-content: center; 
+    margin-top: 15px; 
+}
+
+.badges-container div {
+    padding: 8px 16px; 
+    border-radius: 20px; 
+    font-weight: 600; 
+    font-size: 0.9em; 
+    box-shadow: 0 2px 6px #0000000d;
+}
+
+#total-products {
+    background: #F1F8E9; 
+    color: #558B2F; 
+}
+
+#active-calls {
+    background: #E3F2FD; 
+    color: #1976D2; 
+}
+
+#errors-today {
+    background: #FFF3E0; 
+    color: #F57C00; 
+}
+
+
+/* Actions Container */
+.actions-container {
+    background-color: #ffffff;
+    border-radius: 16px;
+    width: 70%;
+    margin: 60px auto 0;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 4px 12px #0000001a;
+}
+
+.actions-container button {
+    width: 142px;
+    border-radius: 26px;
+    padding: 9px 15px 9px 15px;
+    margin: 0 10px;
+    color: #fff;
+    font-weight: 500;
+    border: none;
+    background-color: var(--dark-transparent);
+    transition: all 0.3s ease;
+    border: 3px solid var(--bright);
+}
+
+.actions-container button:hover {
+    cursor: pointer;
+    border: 3px solid var(--dark-transparent);
+    background-color: white;
+    color: var(--bright);
+    box-shadow: 0 4px 12px #00000026;
+}
+
+.actions-container button:active {
+    transform: scale(1.05);
+    background-color: #73adfd33;
+}
+
+
+/* Data container */
+.info-container {
+    background-color: #ffffff;
+    border-radius: 16px;
+    width: 90%;
+    margin: 40px auto;
+    padding: 20px;
+    box-shadow: 0 4px 12px #0000001a;
+}
+
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #0000000d;
+}
+
+.info-table th, td {
+    padding: 12px 15px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.info-table th {
+    background-color: var(--mute);
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.info-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.info-table tr:hover {
+    background-color: #eef2ff;
+}
+
+.info-table img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.table-actions button {
+    flex: 1;
+    padding: 6px 0;
+    color: #fff;
+    border: none;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.table-actions button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.btn-del {
+    background-color: var(--red-btn);
+}
+
+.btn-upd {
+    background-color: var(--green-btn);
+}
+
+
+.info-table td:nth-child(7) {
+    width: 290px;
+}
+
+
+/* Modal General Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #00000066;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content{
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 8px 20px #0000001f;
+    text-align: center;
+    border-radius: 16px;
+}
+
+.close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #333;
+}
+
+
+/* Delete Modal */
+.del-modal-content {
+    margin: 15% auto;
+    padding: 20px;
+    width: 400px;
+    max-width: 90%;
+}
+
+.del-modal-content p {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.del-modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.del-modal-actions button {
+    padding: 10px 25px;
+    border-radius: 15px;
+    width: 86px;
+    margin-top: 8px;
+    border: none;
+    font-weight: 600;
+    color: #fff;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-yes {
+    background-color: var(--red-btn);
+}
+
+.btn-yes:hover {
+    background-color: var(--dark-transparent);
+}
+
+.btn-no {
+    background-color: #a9a9a9;
+}
+
+.btn-no:hover {
+    background-color: #7b7b7bda;
+}
+
+
+/* Updaate Modal */
+.upd-modal-content {  
+    padding: 25px 30px;
+    width: 450px;
+    max-width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.upd-modal-content h3 {
+    margin-bottom: 15px;
+    color: black;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.select-field {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.select-field:focus {
+    border-color: var(--mute);
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.btn-save {
+    display: flex;
+    background-color: var(--green-btn);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-save:hover {
+    background-color: #70a771;
+}
+
+
+/* Spinner */
+.spinner {
+    display: none;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--mute);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+/* Error message */
+.error-msg {
+    color: #bd4949;
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    display: none;
+}
+
+/* Success message */
+.mssg-box {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    right: 0;
+    top: 0;
+    width: 280px;
+    height: 67px;
+    background-color: #f3f3f3;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 18px;
+    border-radius: 6px;
+    border: solid  3px #cacaca;
+    margin: 8px;
+    animation: slideIn 0.6s ease forwards;
+}
+
+.close-msg {
+    top: 0 !important;
+    right: 10px !important;
+}
+
+.slide-out {
+    animation: slideOut 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        right: -300px;
+        opacity: 0;
+    }
+    to {
+        right: 8px;
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        right: 8px;
+        opacity: 1;
+    }
+    to {
+        right: -300px;
+        opacity: 0;
+    }
+}
+
+
+
+
+/* MEDIA QUERIES */
+@media (max-width: 1200px) {
+    .actions-container {
+        padding: 2rem;
+    }
+
+    .info-container {
+        width: 95%;
+    }
+}
+
+
+@media (max-width: 992px) {
+    /* Hide text, keep icon */
+    .btn-del, .btn-upd {
+        font-size: 0; /* remove text spacing */
+    }
+
+    .btn-del i, .btn-upd i {
+        font-size: 0.8rem;
+    }
+
+    .btn-del, .btn-upd {
+        width: 30px;
+        height: 30px;
+    }
+
+    .actions-container button {
+        width: 120px;
+        margin: 0.5rem;
+    }
+
+    .info-table img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .info-container {
+        overflow-x: auto;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .actions-container {
+        width: 95%;
+        padding: 1.25rem;
+    }
+
+    .actions-container button {
+        width: 90%;
+        padding: 0.75rem 0;
+        font-size: 0.9rem;
+    }
+
+    .badges-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info-table th, .info-table td {
+        padding: 0.5rem 0.4rem;
+        font-size: 0.85rem;
+    }
+
+    .info-table img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .upd-modal-content, .del-modal-content {
+        margin: 20% auto;
+        padding: 1rem;
+    }
+
+    .del-modal-actions, .form-actions {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .del-modal-content {
+        margin: 0;
+    }
+
+    .modal {
+        justify-content: center;
+        align-items: center;   
+        padding: 1rem;   
+    }
+
+    .del-modal-actions button {
+        width: 80%;
+        max-width: 200px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .del-modal-actions button {
+        width: 90%;
+        max-width: none;
+    }
+    
+    header h1 {
+        font-size: 1.25rem;
+    }
+
+    header p {
+        font-size: 0.8rem;
+    }
+
+    .actions-container button {
+        font-size: 0.85rem;
+        padding: 0.6rem 0;
+    }
+
+    .info-table th, .info-table td {
+        padding: 0.4rem 0.3rem;
+        font-size: 0.75rem;
+    }
+
+    .info-table img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .upd-modal-content, .del-modal-content {
+        width: 95%;
+        margin: 25% auto;
+        padding: 0.8rem;
+    }
+}
+
+
+@media (max-width: 360px) {
+    header h1 {
+        font-size: 1.1rem;
+    }
+
+    header p {
+        font-size: 0.7rem;
+    }
+
+    .actions-container button {
+        font-size: 0.8rem;
+        padding: 0.5rem 0;
+    }
+
+    .info-table th, .info-table td {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.2rem;
+    }
+
+    .info-table img {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+
