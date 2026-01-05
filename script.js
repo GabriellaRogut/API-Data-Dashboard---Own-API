@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // -------------------------
     loadBtn.addEventListener("click", () => {
         setActiveCalls(1);
-        fetch("http://localhost/API-Data-Dashboard%20-%20Own%20API/API/products.php")
+        fetch("http://localhost/API-Data-Dashboard-Own-API/API/products.php")
             .then(res => res.json())
             .then(products => {
                 tableBody.innerHTML = "";
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!rowToDelete) return;
         const id = rowToDelete.cells[0].innerText;
         setActiveCalls(1);
-        fetch(`http://localhost/API-Data-Dashboard%20-%20Own%20API/API/products.php?id=${id}`, { method: "DELETE" })
+        fetch(`http://localhost/API-Data-Dashboard-Own-API/API/products.php?id=${id}`, { method: "DELETE" })
             .then(() => {
                 rowToDelete.remove();
                 showSuccess("Item Deleted Successfully.");
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentRow = null;
     let currentProductId = null;
 
-    fetch("http://localhost/API-Data-Dashboard%20-%20Own%20API/API/categories.php")
+    fetch("http://localhost/API-Data-Dashboard-Own-API/API/categories.php")
         .then(res => res.json())
         .then(categories => {
             categories.forEach(cat => {
@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateSpinner.style.display = "inline-block";
         setActiveCalls(1);
 
-        fetch(`http://localhost/API-Data-Dashboard%20-%20Own%20API/API/products.php?id=${currentProductId}`, {
+        fetch(`http://localhost/API-Data-Dashboard-Own-API/API/products.php?id=${currentProductId}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title, price, description, categoryId, images: [image] })
@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
         addSpinner.style.display = "inline-block";
         setActiveCalls(1);
 
-        fetch("http://localhost/API-Data-Dashboard%20-%20Own%20API/API/products.php", {
+        fetch("http://localhost/API-Data-Dashboard-Own-API/API/products.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title, price, description, categoryId, images: [image] })
