@@ -129,7 +129,78 @@ header p {
 }
 
 
-/* Data container */
+/* Data container and filters */
+.filters-container {
+    max-width: 1200px;
+    margin: 30px auto;            
+    padding: 16px 24px;
+    display: flex;
+    justify-content: flex-end;   
+    gap: 24px;
+
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+}
+
+.filter-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.filter-group select,
+#priceRange {
+    padding: 8px 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+    outline: none;
+    background: #fafafa;
+}
+
+.filter-group select:focus,
+#priceRange:focus {
+    border-color: #5a67d8;
+    background: #fff;
+}
+
+#priceRange {
+    width: 220px;
+    accent-color: #5a67d8; 
+}
+
+#priceValue {
+    font-weight: 700;
+    color: #5a67d8;
+}
+
+@media (max-width: 768px) {
+    .filters-container {
+        justify-content: center;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+
+    #priceRange {
+        width: 100%;
+    }
+}
+
+
+
+
 .info-container {
     background-color: #ffffff;
     border-radius: 16px;

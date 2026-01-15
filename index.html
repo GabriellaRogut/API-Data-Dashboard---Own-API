@@ -46,6 +46,31 @@
     </div>
 
 
+    <div class="filters-container">
+        <div class="filter-group">
+            <label for="categoryFilter">Building Type</label>
+            <select id="categoryFilter">
+                <option value="all">All</option>
+            </select>
+            
+        </div>
+
+        <div class="filter-group">
+            <label for="priceRange">
+                Max Price: $<span id="priceValue">10000</span>
+            </label>
+            <input
+                type="range"
+                id="priceRange"
+                min="0"
+                max="10000"
+                step="100"
+                value="10000"
+            />
+        </div>
+    </div>
+
+
     <div class="info-container">
         <table class="info-table">
             <thead>

@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    let allProducts = [];
+
     // -------------------------
     // ELEMENTS
     // -------------------------
@@ -11,6 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalProductsBadge = document.getElementById("total-products");
     const activeCallsBadge = document.getElementById("active-calls");
     const errorsBadge = document.getElementById("errors-today");
+
+    const categoryFilter = document.getElementById("categoryFilter");
+    const priceRange = document.getElementById("priceRange");
+    const priceValue = document.getElementById("priceValue");
+
 
     let errorsCount = 0;
 
@@ -46,22 +53,25 @@ document.addEventListener("DOMContentLoaded", () => {
     // -------------------------
     // LOAD PRODUCTS
     // -------------------------
-    loadBtn.addEventListener("click", () => {
-        setActiveCalls(1);
-        fetch("http://localhost/API-Data-Dashboard-Own-API/API/products.php")
-            .then(res => res.json())
-            .then(products => {
-                tableBody.innerHTML = "";
+    loadBtn.addEventListener("click", () => { 
+        setActiveCalls(1); 
+        fetch("http://localhost/API-Data-Dashboard-Own-API/API/products.php") 
+            .then(res => res.json()) 
+            .then(products => { 
+                tableBody.innerHTML = ""; 
                 products.forEach(p => addProductRow(p));
-                updateBadges();
-            })
-            .catch(err => {
+                 updateBadges(); 
+            }) 
+            .catch(err => { 
                 console.error("Error loading products", err);
-                errorsCount++;
-                updateBadges();
-            })
-            .finally(() => setActiveCalls(0));
-    });
+                errorsCount++; 
+                updateBadges(); 
+            }) 
+            .finally(() => setActiveCalls(0)); 
+        });
+
+
+
 
     // -------------------------
     // ADD ROW
