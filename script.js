@@ -58,9 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
         fetch("http://localhost/API-Data-Dashboard-Own-API/API/products.php") 
             .then(res => res.json()) 
             .then(products => { 
-                tableBody.innerHTML = ""; 
-                products.forEach(p => addProductRow(p));
-                 updateBadges(); 
+                allProducts = products;     
+                populateCategoryFilter(products);
+                renderProducts(products);        
+                updateBadges(); 
             }) 
             .catch(err => { 
                 console.error("Error loading products", err);
@@ -68,8 +69,53 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateBadges(); 
             }) 
             .finally(() => setActiveCalls(0)); 
-        });
+    });
 
+
+    function renderProducts(products) {
+        tableBody.innerHTML = "";
+        products.forEach(p => addProductRow(p));
+        updateBadges();
+    }
+
+
+    function populateCategoryFilter(products) {
+        const categories = [...new Set(products.map(p => p.category.name))];
+
+        categoryFilter.innerHTML = `<option value="all">All</option>`;
+        categories.forEach(cat => {
+            categoryFilter.innerHTML += `<option value="${cat}">${cat}</option>`;
+        });
+    }
+
+
+    categoryFilter.addEventListener("change", applyFilters);
+    priceRange.addEventListener("input", () => {
+        priceValue.textContent = priceRange.value;
+        applyFilters();
+    });
+
+
+
+    function applyFilters() {
+        // console.log(allProducts.length);
+        let filtered = [...allProducts];
+
+        const selectedCategory = categoryFilter.value;
+        const maxPrice = parseFloat(priceRange.value);
+
+        if (selectedCategory !== "all") {
+            filtered = filtered.filter(
+                p => p.category.name === selectedCategory
+            );
+        }
+
+        filtered = filtered.filter(
+            p => p.price <= maxPrice
+        );
+
+        renderProducts(filtered);
+    }
 
 
 
