@@ -1,8 +1,6 @@
 <?php
-    // Include db connection
-    require "database.php";
+    include("database.php");
 
-    // get all categories
     $sql = "
         SELECT id, name 
         FROM 
@@ -15,7 +13,6 @@
 
     // Loop through each row in the result
     while ($row = $result->fetch_assoc()) {
-        // Add id and name of cat to the array
         $categories[] = [
             "id" => $row["id"],
             "name" => $row["name"]

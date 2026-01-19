@@ -675,4 +675,10 @@ header p {
     }
 }
 
-
+footer {
+  background: white; 
+  text-align: center; 
+  padding: 2rem; 
+  font-size: 0.9rem; 
+  color: rgb(74, 74, 74);
+}

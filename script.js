@@ -74,14 +74,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderProducts(products) {
         tableBody.innerHTML = "";
+        const noProductsDiv = document.getElementById("noProducts");
+
+        if (products.length === 0) {
+            noProductsDiv.style.display = "block";
+            return;
+        }
+
+        noProductsDiv.style.display = "none";
+
         products.forEach(p => addProductRow(p));
         updateBadges();
     }
 
 
-    function populateCategoryFilter(products) {
-        const categories = [...new Set(products.map(p => p.category.name))];
 
+    function populateCategoryFilter(products) {
+        const categories = products
+            .map(p => p.category.name)      // get all category names
+            .filter((name, index, arr) => arr.indexOf(name) === index);   // keep only first
         categoryFilter.innerHTML = `<option value="all">All</option>`;
         categories.forEach(cat => {
             categoryFilter.innerHTML += `<option value="${cat}">${cat}</option>`;

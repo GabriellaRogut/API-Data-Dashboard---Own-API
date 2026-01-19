@@ -1,10 +1,10 @@
 <?php
-    require "database.php";
+    include("database.php");
 
     // Get request method (GET, POST, PUT, DELETE)
     $method = $_SERVER['REQUEST_METHOD'];
 
-    // Read JSON input for POST and PUT requests ("get data from a json body")
+    // Read JSON input for POST and PUT requests
     $input = json_decode(file_get_contents("php://input"), true);
 
     switch ($method) {
